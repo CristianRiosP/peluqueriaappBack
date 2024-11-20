@@ -21,6 +21,7 @@ const dbConexion = async () => {
         console.error('Unable to connect to the database:', error.message);
         throw error; // Lanza el error para que sea capturado más arriba
     }
+   
 };
 
 module.exports =  {dbConexion,sequelize} ;

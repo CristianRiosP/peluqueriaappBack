@@ -1,8 +1,10 @@
 // models/Servicio.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/config');
+const BarberiaServicio = require('./BarberiaServicio');
 
-const Servicio = sequelize.define('servicio', {
+
+const Servicio = sequelize.define('servicios', {
   nombre: {
     type: DataTypes.STRING(100),
     allowNull: false,
@@ -10,22 +12,11 @@ const Servicio = sequelize.define('servicio', {
   descripcion: {
     type: DataTypes.TEXT,
   },
-  precio: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
-  },
-  duracion: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  activo: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  },
 }, {
   timestamps: true, 
   createdAt: 'created_at',
   updatedAt: 'updated_at',
 });
+// Servicio.hasMany(BarberiaServicio, { foreignKey: 'fk_servicios_id' });
 
 module.exports = Servicio;

@@ -5,7 +5,7 @@ const Cliente = require('./Cliente');
 const Empleado = require('./Empleado');
 const Servicio = require('./Servicio');
 
-const Cita = sequelize.define('cita', {
+const Cita = sequelize.define('citas', {
   fecha_hora: {
     type: DataTypes.DATE,
     allowNull: false,
@@ -21,8 +21,8 @@ const Cita = sequelize.define('cita', {
 });
 
 // Definición de las relaciones
-Cita.belongsTo(Cliente, { foreignKey: 'fk_cliente_id' });
-Cita.belongsTo(Empleado, { foreignKey: 'fk_empleado_id' });
-Cita.belongsTo(Servicio, { foreignKey: 'fk_servicio_id' });
+Cita.belongsTo(Cliente, { foreignKey: 'clientes_id' });
+Cita.belongsTo(Empleado, { foreignKey: 'empleados_id' });
+Cita.belongsTo(Servicio, { foreignKey: 'servicios_id' });
 
 module.exports = Cita;

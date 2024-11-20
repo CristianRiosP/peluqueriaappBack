@@ -7,7 +7,7 @@ const options = {
         openapi:"3.0.0",
         info: {title: "backend",version:"1.0.0"}
     },
-    apis: ["src/v1/routes/appointmentRoutes.js"]
+    apis: ["src/interface/v1/routes/barberiaRoutes.js"]
 }
 
 

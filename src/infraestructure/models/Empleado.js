@@ -1,8 +1,8 @@
-// models/Cliente.js
+// models/Empleado.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/config');
 
-const Cliente = sequelize.define('cliente', {
+const Empleado = sequelize.define('empleados', {
   nombre: {
     type: DataTypes.STRING(100),
     allowNull: false,
@@ -10,11 +10,10 @@ const Cliente = sequelize.define('cliente', {
   telefono: {
     type: DataTypes.STRING(15),
   },
-  email: {
+  especialidad: {
     type: DataTypes.STRING(100),
-    unique: true,
   },
-  fecha_registro: {
+  fecha_ingreso: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
@@ -24,4 +23,4 @@ const Cliente = sequelize.define('cliente', {
   updatedAt: 'updated_at',
 });
 
-module.exports = Cliente;
+module.exports = Empleado;
