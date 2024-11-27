@@ -40,12 +40,12 @@ try {
       },
       include: [
         {
-          model: Barberia,  // Incluir solo el nombre de la barbería
-          attributes: ['nombre'],  // Solo el campo nombre
+          model: Barberia,  
+          attributes: ['nombre'],  
         },
         {
-          model: Servicio,  // Incluir solo el nombre del servicio
-          attributes: ['nombre'],  // Solo el campo nombre
+          model: Servicio, 
+          attributes: ['nombre'],  
         }
       ],
       attributes: [

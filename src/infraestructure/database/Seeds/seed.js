@@ -2,7 +2,7 @@
 const {sequelize} = require('../config'); // Ajusta la ruta según tu estructura
 const Servicio = require('../../models/Servicio');
 const Cliente = require('../../models/Cliente');
-const Empleado = require('../../models/Empleado');
+const Barbero = require('../../models/Barbero');
 const Cita = require('../../models/Cita');
 const StarBarberia = require('../../models/StarBarberia');
 const Barberia = require('../../models/Barberia');
@@ -22,16 +22,16 @@ const seedDatabase = async () => {
         const clientes = [
             { nombre: 'Juan Pérez', password: '123456789', email: 'jua@example.com' },
             { nombre: 'Ana Gómez', password: '987654321', email: 'ana@example.com' },
-            { nombre: 'hernesto Pérez', password: '13456789', email: 'juan@example.com' },
+            { nombre: 'hernesto Pérez', password: '13456789', email: 'juan@xample.com' },
             { nombre: 'Anastasia Gómez', password: '98654321', email: 'an@example.com' },
         ];
         await Cliente.bulkCreate(clientes);
 
         const empleados = [
-            { nombre: 'Luis', duracion: '555555555', especialidad: 'Corte de cabello' },
+            { nombre: 'Luis', telefono: '555555555', especialidad: 'Corte de cabello' },
             { nombre: 'María', telefono: '666666666', especialidad: 'Manicure' },
         ];
-        await Empleado.bulkCreate(empleados);
+        await Barbero.bulkCreate(empleados);
         
         const barberias = [
             { nombre: 'Luis Cortex', avatar: 'img/avatar.png', tipo: '1' },

@@ -2,17 +2,26 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require('../database/config');
 const Cliente = require('./Cliente');
-const Empleado = require('./Empleado');
+const Barbero = require('./Barbero');
 const Servicio = require('./Servicio');
+const Barberia = require('./Barberia');
 
 const Cita = sequelize.define('citas', {
-  fecha_hora: {
+  fecha_cita: {
     type: DataTypes.DATE,
     allowNull: false,
   },
+  barbero:{
+    type: DataTypes.STRING(50),
+  },
   estado: {
     type: DataTypes.STRING(50),
-    defaultValue: 'Programada',
+  },
+  hora_inicio: {
+    type:  DataTypes.TIME,
+  },
+  hora_fin: {
+    type: DataTypes.TIME,
   },
 }, {
   timestamps: true, 
@@ -22,7 +31,8 @@ const Cita = sequelize.define('citas', {
 
 // Definición de las relaciones
 Cita.belongsTo(Cliente, { foreignKey: 'clientes_id' });
-Cita.belongsTo(Empleado, { foreignKey: 'empleados_id' });
+// Cita.belongsTo(Barbero, { foreignKey: 'barbero_id' });
 Cita.belongsTo(Servicio, { foreignKey: 'servicios_id' });
+Cita.belongsTo(Barberia, { foreignKey: 'barberias_id' });
 
 module.exports = Cita;

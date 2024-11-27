@@ -1,8 +1,7 @@
-// models/Empleado.js
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/config');
 
-const Empleado = sequelize.define('empleados', {
+const Barbero = sequelize.define('barberos', {
   nombre: {
     type: DataTypes.STRING(100),
     allowNull: false,
@@ -23,4 +22,4 @@ const Empleado = sequelize.define('empleados', {
   updatedAt: 'updated_at',
 });
 
-module.exports = Empleado;
+module.exports = Barbero;
