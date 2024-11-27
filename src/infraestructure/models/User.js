@@ -22,6 +22,10 @@ const Usuarios = sequelize.define('Usuarios', {
         type: DataTypes.STRING(255),
         allowNull: true,  
        },
+       avatar: {
+        type: DataTypes.TEXT,
+        allowNull: true,  
+       },
   }, {
     timestamps: true,  
     createdAt: 'created_at',

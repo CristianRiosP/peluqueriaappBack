@@ -9,21 +9,26 @@ dotenv.config();
 const login = async (req, res) => {
   const { username, password } = req.body;
 
+  console.log( username, password)
   try {
-   
+    
     const existingUser = await User.findOne({ where: { username } });
 
     
     if (!existingUser) {
-      return res.status(401).json({ error: 'Credenciales inválidas.' });
+
+     return res.status(401).json({ error: 'Credenciales inválidas.' });
     }
 
-   
+       
     bcrypt.compare(password, existingUser.password, (err, isMatch) => {
       if (err || !isMatch) {
         return res.status(401).json({ error: 'Credenciales inválidas.' });
       }
 
+    const id= existingUser.id
+    const avatar=existingUser.avatar
+    const nombre=existingUser.nombre
       
       const token = jwt.sign(
         { id: existingUser.id, username: existingUser.username },
@@ -32,7 +37,7 @@ const login = async (req, res) => {
       );
 
       
-      return res.json({ token });
+      return res.json({ token,  id, nombre ,avatar });
     });
 
   } catch (error) {
@@ -44,7 +49,7 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   const { username, password, nombre } = req.body;
 
-  
+
   try {
     const existingUser = await User.findOne({ where: { username } });
     if (existingUser) {
