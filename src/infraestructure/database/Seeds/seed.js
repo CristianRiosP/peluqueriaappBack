@@ -34,8 +34,8 @@ const seedDatabase = async () => {
         await Barbero.bulkCreate(empleados);
         
         const barberias = [
-            { nombre: 'Luis Cortex', avatar: 'img/avatar.png', tipo: '1' },
-            { nombre: 'rappi Cortes',  avatar: 'img/avatar.png', tipo: '2' },
+            { nombre: 'Luis Cortex', avatar: 'http://192.168.1.17:3001/images/barbero.png', tipo: '1' },
+            { nombre: 'rappi Cortes',  avatar: 'http://192.168.1.17:3001/images/peluqueria.png', tipo: '2' },
         ];
         await Barberia.bulkCreate(barberias);
 
