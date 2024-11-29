@@ -6,9 +6,6 @@ const Barbero = sequelize.define('barberos', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  telefono: {
-    type: DataTypes.STRING(15),
-  },
   especialidad: {
     type: DataTypes.STRING(100),
   },

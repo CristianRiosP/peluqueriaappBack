@@ -27,15 +27,15 @@ const seedDatabase = async () => {
         ];
         await Cliente.bulkCreate(clientes);
 
-        const empleados = [
-            { nombre: 'Luis', telefono: '555555555', especialidad: 'Corte de cabello' },
-            { nombre: 'María', telefono: '666666666', especialidad: 'Manicure' },
+        const barbero = [
+            { nombre: 'Luis', especialidad: 'Corte de cabello' },
+            { nombre: 'María', especialidad: 'Manicure' },
         ];
-        await Barbero.bulkCreate(empleados);
+        await Barbero.bulkCreate(barbero);
         
         const barberias = [
-            { nombre: 'Luis Cortex', avatar: 'http://192.168.1.17:3001/images/barbero.png', tipo: '1' },
-            { nombre: 'rappi Cortes',  avatar: 'http://192.168.1.17:3001/images/peluqueria.png', tipo: '2' },
+            { nombre: 'Luis Cortex', telefono: '555555555',avatar: 'http://192.168.1.17:3001/images/barbero.png', tipo: '1' },
+            { nombre: 'rappi Cortes',  telefono: '666666666',avatar: 'http://192.168.1.17:3001/images/peluqueria.png', tipo: '2' },
         ];
         await Barberia.bulkCreate(barberias);
 
@@ -54,6 +54,16 @@ const seedDatabase = async () => {
             { valoracion: 2,fk_barberia_id:2,fk_cliente_id:4 },
         ];
         await StarBarberia.bulkCreate(starBarberias);
+
+        const citas=[
+            {clientes_id:1,barbero:1,servicios_id:1,fecha_cita:"12-05-2024",estado:1, hora_inicio:"12:30", barberias_id:1,},
+            {clientes_id:1,barbero:1,servicios_id:2,fecha_cita:"12-05-2024",estado:2, hora_inicio:"13:30", barberias_id:1,},
+            {clientes_id:1,barbero:1,servicios_id:1,fecha_cita:"12-05-2024",estado:1, hora_inicio:"14:30", barberias_id:2,},
+            {clientes_id:1,barbero:1,servicios_id:2,fecha_cita:"12-05-2024",estado:2, hora_inicio:"9:30", barberias_id:1,},
+            {clientes_id:1,barbero:1,servicios_id:1,fecha_cita:"12-05-2024",estado:1, hora_inicio:"11:30", barberias_id:2,},
+            {clientes_id:1,barbero:1,servicios_id:2,fecha_cita:"12-05-2024",estado:1, hora_inicio:"17:30", barberias_id:1,},
+        ]
+        await Cita.bulkCreate(citas);
 
         console.log("🏝️Datos sembrados correctamente.");
     } catch (error) {

@@ -11,6 +11,9 @@ const Barberia = sequelize.define('barberias', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
+  telefono: {
+    type: DataTypes.STRING(15),
+  },
   tipo: {
     type: DataTypes.TEXT,
   },

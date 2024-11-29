@@ -1,10 +1,11 @@
-const appointmentInterface = require("../../domain/repositories/appointmentInterface");
 const Appointment = require("../models/Cita");
+const { Sequelize, Op } = require('sequelize');
+const AppointmentInterface = require("../../domain/repositories/AppointmentInterface");
 
 
-class SequelizeAppointmentRepository extends appointmentInterface {
+class SequelizeAppointmentRepository {
     constructor(){
-        super();
+        
     }
 
     async createAppointment(appointmentRequestDto){
@@ -25,6 +26,25 @@ class SequelizeAppointmentRepository extends appointmentInterface {
         }
         
         
+    }
+    async allListAppointment(appointmentListDto){
+        try {
+            const listAppointment = await Appointment.findAll({
+                where:{
+                    barberias_id:{
+                        [Sequelize.Op.eq]: appointmentListDto.idBarberia                 
+                    },
+                    estado:{
+                        [Sequelize.Op.eq]: appointmentListDto.estado
+                    }
+
+                }
+            })
+            return listAppointment;
+        } catch (error) {
+            console.error("Error al obtener las citas en la base de datos.",error);
+            throw new Error("Error al obtener las citas en la base de datos");
+        }
     }
 
 }

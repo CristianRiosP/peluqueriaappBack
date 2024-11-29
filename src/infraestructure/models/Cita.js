@@ -15,7 +15,7 @@ const Cita = sequelize.define('citas', {
     type: DataTypes.STRING(50),
   },
   estado: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.INTEGER,
   },
   hora_inicio: {
     type:  DataTypes.TIME,

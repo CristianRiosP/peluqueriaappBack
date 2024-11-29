@@ -4,10 +4,7 @@ const AppointmentController = require("../../controllers/appointmentController")
 const AppointmentServices = require("../../../applicarion/services/appointmentServices");
 
 
-// Instancia el servicio
 const appointmentServices = new AppointmentServices();
-
-// Pasa la instancia del servicio al controlador
 const appointmentController = new AppointmentController(appointmentServices);
 
 
@@ -44,6 +41,31 @@ const appointmentController = new AppointmentController(appointmentServices);
  *               type: object
  */
 router.post("/", appointmentController.postCreateAppointment.bind(appointmentController));
+/**
+ * @openapi
+ * /api/v1/appointment/barber:
+ *   post:  
+ *     tags:
+ *       - appointment
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Barber_id:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+router.post("/barber", appointmentController.postAppointmentsBarber.bind(appointmentController));
+
 
 
 

@@ -1,5 +1,6 @@
-const AppointmentRepository = require("../../infraestructure/repository/appointmentRepository");
+const AppointmentRepository = require("../../domain/repositories/AppointmentInterface");
 const AppointmentDTO = require("../../domain/entities/appointmentDto");
+const AppointmentListDto = require("../../domain/entities/appointmentListDto");
 class AppointmentServices {
    
     constructor(appointmentRepository){
@@ -15,7 +16,7 @@ class AppointmentServices {
             createAppointmentDTO.servicioId,
             createAppointmentDTO.fechaCita,
             createAppointmentDTO.horaCita,
-            "Programada"
+            1
         );
 
         return await this.appointmentRepository.createAppointment(appointmentRequestDto);
@@ -23,6 +24,24 @@ class AppointmentServices {
             throw new Error("Error al crear la cita.",error);
         }
        
+    }
+    async AllApponintmentsBarber(BarberId){
+        try{
+            const appointmentListDto = new AppointmentListDto(
+                BarberId,
+                1
+            )
+            const response = await this.appointmentRepository.allListAppointment(appointmentListDto);
+            
+            return response;
+
+        }catch(error){
+
+            console.error(error)
+            throw new Error("Error al obtener citas.",error);
+
+        }
+
     }
 }
 

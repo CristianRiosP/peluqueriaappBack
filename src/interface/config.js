@@ -45,7 +45,7 @@ const startServer = async () => {
             console.log(`🚀 Server is running on port ${PORT}`);
             V1SwaggerDocs(app, PORT);
         });
-     // await seedDatabase();
+     await seedDatabase();
     } catch (error) {
         console.error('Error en la conexión a la base de datos:', error);
     } 

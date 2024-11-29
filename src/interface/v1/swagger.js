@@ -18,7 +18,7 @@ const options = {
     apis: ["src/interface/v1/routes/barberiaRoutes.js", 
            "src/interface/v1/routes/appointmentRoute.js",
            "src/interface/v1/routes/authRoutes.js",
-            "src/interface/v1/routes/userRoutes.js"
+           "src/interface/v1/routes/userRoutes.js"
           ],
 }
 
