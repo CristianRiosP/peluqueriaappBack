@@ -36,18 +36,28 @@ class AppointmentController {
         });
       });
   }
-  async postAppointmentsBarber(req, res){
-    const { Barber_id,} = req.body;
-
-    await this.appointmentServices
-    .AllApponintmentsBarber(Barber_id)
-    .then((response)=>{
-      res.status(200).json({
+  async postAppointmentsBarber(req, res) {
+    const { Barber_id } = req.body;
+  
+    try {
+      const response = await this.appointmentServices.AllApponintmentsBarber(Barber_id);
+  
+      if (response && response.length === 0) {
+        // Si la respuesta está vacía
+        return res.status(200).json({
+          status: "empty",
+          message: "No se encontraron citas para este barbero.",
+          data: [],
+        });
+      }
+  
+      // Si hay citas
+      return res.status(200).json({
         status: "success",
-        message: "El listado de Citas se ha generado correctamente",
+        message: "El listado de citas se ha generado correctamente",
         data: response,
-      });    
-    }).catch((error) => {
+      });
+    } catch (error) {
       console.error("Error al obtener las citas:", error);
       return res.status(500).json({
         status: "error",
@@ -55,8 +65,7 @@ class AppointmentController {
           "Ha ocurrido un error al obtener las citas. Por favor, intente nuevamente más tarde.",
         error: error.message || error,
       });
-    });
-  
+    }
   }
 }
 
